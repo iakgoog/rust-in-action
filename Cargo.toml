@@ -1,0 +1,9 @@
+[workspace]
+members = ["ch2_language_foundations"]
+
+[package]
+name = "rust-in-action"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
