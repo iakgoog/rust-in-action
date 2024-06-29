@@ -32,12 +32,26 @@ mod ch2 {
     
         println!("{:02}", forty_twos[0]);
     }
+
+    pub fn p232() {
+        let three = 0b11;
+        let thirty = 0o36;
+        let three_hundred = 0x12C;
+
+        println!("base 10: {} {} {}", three, thirty, three_hundred);
+        println!("base 2: {:b} {:b} {:b}", three, thirty, three_hundred);
+        println!("base 8: {:o} {:o} {:o}", three, thirty, three_hundred);
+        println!("base 16: {:x} {:x} {:x}", three, thirty, three_hundred); 
+    }
 }
 
 fn main() {
     println!("____2.2.1 Defining variables and calling functions");
     ch2::p221();
 
-    println!("____2.3.1 Integers and decimal (floating-point) numbers");
+    println!("\n____2.3.1 Integers and decimal (floating-point) numbers");
     ch2::p231();
+
+    println!("\n____2.3.2 Integers with base 2, base 8, and base 16 notation");
+    ch2::p232();
 }
