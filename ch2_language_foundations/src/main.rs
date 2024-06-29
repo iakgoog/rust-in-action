@@ -1,4 +1,6 @@
 mod ch2 {
+    use num::Complex;
+
     pub fn p221() {
         let a = 10;
         let b: i32 = 20;
@@ -91,6 +93,14 @@ mod ch2 {
         // assert!(x2.is_finite()) ; // this test will fail
         assert!(x2.is_infinite()); 
     }
+
+    pub fn p234() {
+        let a = Complex { re: 2.1, im: -1.2 };
+        let b = Complex::new(11.1, 22.2);
+        let result = a + b;
+
+        println!("{} + {}i", result.re, result.im); // 13.2 + 21i
+    }
 }
 
 fn main() {
@@ -108,4 +118,10 @@ fn main() {
 
     println!("\n____2.3.3 Floating-point hazards");
     ch2::p2332();
+
+    println!("\n____2.3.3 The rest...");
+    ch2::p2333();
+
+    println!("\n____2.3.4 Rational, complex numbers, and other numeric types");
+    ch2::p234();
 }
