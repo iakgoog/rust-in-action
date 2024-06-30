@@ -2,7 +2,7 @@
 extern crate prettytable;
 
 mod ch2 {
-    use std::time::{Duration, Instant};
+    use std::{ops::Add, time::{Duration, Instant}};
     use num::Complex;
     use prettytable::{Cell, Row, Table};
 
@@ -331,6 +331,36 @@ mod ch2 {
         let res = add_with_lifetimes(&a, &b);
         println!("{}", res);
     }
+
+    /*
+    fn add<T>(i: T, j: T) -> T {
+        i + j
+    }
+    error[E0369]: cannot add `T` to `T`
+    This issue arises because T really means any type at all, even types where addition is not supported.
+    */
+    // The fragment <T: std::ops::Add<Output = T>> says that T must implement std::ops::Add.
+    // Using a single type variable T with the trait bound ensures that arguments i and j,
+    // as well as the result type, are the same type and that their type supports addition
+    fn add2<T: Add<Output = T>>(i: T, j: T) -> T {
+        i + j
+    }
+    // To reiterate: all of Rust’s operators are syntactic sugar for a trait’s methods.
+    // Rust supports operator overloading this way. During the compilation process,
+    // a + b is converted to a.add(b)
+
+    pub fn p282() {
+        let floats = add2(1.2, 3.4);
+        let ints = add2(10, 20);
+        let durations = add2(
+            Duration::new(5, 0),
+            Duration::new(10, 0)
+        );
+
+        println!("{}", floats);
+        println!("{}", ints);
+        println!("{:?}", durations);
+    }
 }
 
 fn main() {
@@ -383,4 +413,7 @@ fn main() {
     // 2.8 Advanced function definitions
     println!("\n____2.8.1 Explicit lifetime annotations");
     ch2::p281();
+
+    println!("\n____2.8.2 Generic functions");
+    ch2::p282();
 }
