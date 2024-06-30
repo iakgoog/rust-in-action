@@ -361,6 +361,34 @@ mod ch2 {
         println!("{}", ints);
         println!("{:?}", durations);
     }
+
+    pub fn p29() {
+        let search_term = "picture";
+        let quote = "\
+Every face, every shop, bedroom window, public-house, and
+dark square is a picture feverishly turned--in search of what?
+It is the same with books. 
+What do we seek through millions of pages?";
+
+        for line in quote.lines() {
+            if line.contains(search_term) {
+                println!("{}", line);
+            }
+        }
+
+        let search_term2 = "picture";
+        let quote2 = "\
+Every face, every shop, bedroom window, public-house, and
+dark square is a picture feverishly turned--in search of what?
+It is the same with books. What do we seek trhough millions of pages?";
+
+        for (i, line) in quote2.lines().enumerate() {
+            if line.contains(search_term2) {
+                let line_num = i + 1;
+                println!("{}: {}", line_num, line);
+            }
+        }
+    }
 }
 
 fn main() {
@@ -416,4 +444,7 @@ fn main() {
 
     println!("\n____2.8.2 Generic functions");
     ch2::p282();
+
+    println!("\n____2.9 Creating grep-lite");
+    ch2::p29();
 }
