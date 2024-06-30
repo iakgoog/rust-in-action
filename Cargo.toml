@@ -1,5 +1,5 @@
 [workspace]
-members = ["ch2_language_foundations"]
+members = ["ch2_language_foundations", "ch2_mandelbrot"]
 
 [package]
 name = "rust-in-action"
