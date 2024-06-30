@@ -184,6 +184,17 @@ mod ch2 {
         }
         */
     }
+
+    pub fn p244() {
+        /*
+        loop {
+            let requester, request = accept_request();
+            let result = process_request(request);
+            send_response(requester, result);
+        }
+         */
+    }
+
 }
 
 fn main() {
@@ -214,4 +225,8 @@ fn main() {
     println!("\n____2.4.3 While: Looping until a condition chnages its state");
     println!(">>>> USING WHILE TO STOP ITERATING ONCE A DURATION IS REACHED");
     ch2::p243();
+
+    println!("\n____2.4.4 Loop: The basis for Rust's looping constructs");
+    ch2::p244();
+
 }
