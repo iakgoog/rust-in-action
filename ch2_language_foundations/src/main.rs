@@ -1,5 +1,9 @@
+#[macro_use]
+extern crate prettytable;
+
 mod ch2 {
     use num::Complex;
+    use prettytable::{Cell, Row, Table};
 
     pub fn p221() {
         let a = 10;
@@ -19,19 +23,18 @@ mod ch2 {
         let twenty = 20;
         let twenty_one: i32 = 21;
         let twenty_two = 22i32;
-    
+
         let addition = twenty + twenty_one + twenty_two;
-        println!("{} + {} + {} = {}", twenty, twenty_one, twenty_two, addition);
-    
+        println!(
+            "{} + {} + {} = {}",
+            twenty, twenty_one, twenty_two, addition
+        );
+
         let one_million: i64 = 1_000_000;
         println!("{}", one_million.pow(2));
-    
-        let forty_twos = [
-            42.0,
-            42f32,
-            42.0_f32,
-        ];
-    
+
+        let forty_twos = [42.0, 42f32, 42.0_f32];
+
         println!("{:02}", forty_twos[0]);
     }
 
@@ -43,7 +46,7 @@ mod ch2 {
         println!("base 10: {} {} {}", three, thirty, three_hundred);
         println!("base 2: {:b} {:b} {:b}", three, thirty, three_hundred);
         println!("base 8: {:o} {:o} {:o}", three, thirty, three_hundred);
-        println!("base 16: {:x} {:x} {:x}", three, thirty, three_hundred); 
+        println!("base 16: {:x} {:x} {:x}", three, thirty, three_hundred);
     }
 
     pub fn p2331() {
@@ -85,13 +88,13 @@ mod ch2 {
         let absolute_difference = (desired - result).abs();
         assert!(absolute_difference <= f32::EPSILON);
 
-        let x1: f32 = (-42.0_f32).sqrt();   
+        let x1: f32 = (-42.0_f32).sqrt();
         // assert_eq!(x1, x1); // NAN values are never equal
         assert!(x1.is_nan());
 
         let x2: f32 = 1.0 / 0.0;
         // assert!(x2.is_finite()) ; // this test will fail
-        assert!(x2.is_infinite()); 
+        assert!(x2.is_infinite());
     }
 
     pub fn p234() {
@@ -100,6 +103,45 @@ mod ch2 {
         let result = a + b;
 
         println!("{} + {}i", result.re, result.im); // 13.2 + 21i
+    }
+
+    pub fn p241() {
+        let mut table = Table::new();
+
+        table.add_row(row!["Shorthand", "Equivalent to", "Access"]);
+        table.add_row(Row::new(vec![
+            Cell::new("for item in collection"),
+            Cell::new("for item in IntoIteration::into_iter(collection)"),
+            Cell::new("Ownership"),
+        ]));
+        table.add_row(Row::new(vec![
+            Cell::new("for item in &collection"),
+            Cell::new("for item in collection.iter()"),
+            Cell::new("Read-only"),
+        ]));
+        // A more complicated way to add a row:
+        table.add_row(Row::new(vec![
+            Cell::new("for item in &mut collection"),
+            Cell::new("for item in collection.iter_mut()"),
+            Cell::new("Read-write"),
+        ]));
+
+        // Print the table to stdout
+        table.printstd();
+
+        /* ANONYMOUS LOOPS
+        for _ in 0..10 {
+            ...
+        }
+         */
+
+        /* AVOID MANAGING AN INDEX VARIABLE
+        let collection = [1, 2, 3, 4, 5];
+        for i in 0..collection.len() {
+            let item = collection[i];
+            ...
+        }
+         */
     }
 }
 
@@ -124,4 +166,7 @@ fn main() {
 
     println!("\n____2.3.4 Rational, complex numbers, and other numeric types");
     ch2::p234();
+
+    println!("\n____2.4.1 For: The central pillar of iteration");
+    ch2::p241();
 }
