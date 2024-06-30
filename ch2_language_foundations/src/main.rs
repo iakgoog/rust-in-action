@@ -2,6 +2,7 @@
 extern crate prettytable;
 
 mod ch2 {
+    use std::time::{Duration, Instant};
     use num::Complex;
     use prettytable::{Cell, Row, Table};
 
@@ -142,6 +143,46 @@ mod ch2 {
             ...
         }
          */
+
+        /* 2.4.2 Continue: Skipping the rest of the current iteration
+            for n in 0..10 {
+                if n % 2 == 0 {
+                    continue;
+                }
+                ...
+            }
+         */
+    }
+
+    pub fn p243() {
+        /*
+        let mut samples = vec![];
+
+        while samples.len() < 10 {
+            let sample = take_sample();
+            if is_oyutlier(sample) {
+                continue;
+            }
+
+            samples.push(sample);
+        }
+         */
+
+        //
+        let mut count = 0;
+        let time_limit = Duration::new(1, 0);
+        let start = Instant::now();
+
+        while (Instant::now() - start) < time_limit {
+            count += 1;
+        } 
+        println!("{}", count);
+
+        /* AVOID WHILE WHEN ENDLESSLY LOOPING
+        while true {
+            println!("Are we there yet?");
+        }
+        */
     }
 }
 
@@ -169,4 +210,8 @@ fn main() {
 
     println!("\n____2.4.1 For: The central pillar of iteration");
     ch2::p241();
+
+    println!("\n____2.4.3 While: Looping until a condition chnages its state");
+    println!(">>>> USING WHILE TO STOP ITERATING ONCE A DURATION IS REACHED");
+    ch2::p243();
 }
