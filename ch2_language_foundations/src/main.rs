@@ -218,6 +218,52 @@ mod ch2 {
         }
         */
     }
+
+    pub fn p246() {
+        /* 
+        if item == 42 {
+            ...
+        }
+
+        if item == 42 {
+            ...
+        } else if item == 132 {
+            ...
+        } else {
+            ...
+        }
+        */
+
+        // Rust has no concept of “truthy” or “falsey” types
+        // Rust is an expression-based language
+
+        // Rust programmers assign variables from conditional expressions
+        let n = 123456;
+        let description = if is_even(n) {
+            "even"
+        } else {
+            "odd"
+        };
+        println!("{} is {}", n, description); // 123456 is even
+
+        // This can be extended to other blocks including `match` like this
+        let n2 = 654321;
+        let description2 = match is_even(n2) {
+            true => "even",
+            false => "odd",
+        };
+        println!("{} is {}", n2, description2); // 654321 is odd
+
+        // the `break` keyword also returns a value
+        let n3 = loop {
+            break 123;
+        };
+        println!("{}", n3);
+    }
+
+    fn is_even(n: i32) -> bool {
+        n % 2 == 0
+    }
 }
 
 fn main() {
@@ -254,4 +300,7 @@ fn main() {
 
     println!("\n____2.4.5 Break: Aborting a loop");
     ch2::p245();
+    
+    println!("\n____2.4.6 If, if else, and else: Conditional branching");
+    ch2::p246();
 }
