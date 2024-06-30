@@ -264,6 +264,34 @@ mod ch2 {
     fn is_even(n: i32) -> bool {
         n % 2 == 0
     }
+
+    pub fn p247() {
+        /* 
+        match item {
+            0 => {},
+            // To match a single value, provide the value. No operator is required.
+            10 ..= 20 => {},
+            // The ..=syntax matches an inclusive range.
+            // Inclusive ranges (10 ..= 20) to match any value within the range.
+            40 | 80 => {},
+            // The vertical bar (|) matches values on either side of it.
+            _ => {},
+            // The underscore (_) matches every value.
+        }
+        */
+
+        let haystack = [1, 1, 2, 5, 14, 42, 132, 429, 1430, 4862];
+        for item in &haystack {
+            let result = match item {
+                42 | 132 => "hit!",
+                _ => "miss",
+            };
+
+            if result == "hit!" {
+                println!("{}: {}", item, result);
+            }
+        }
+    }
 }
 
 fn main() {
@@ -303,4 +331,7 @@ fn main() {
     
     println!("\n____2.4.6 If, if else, and else: Conditional branching");
     ch2::p246();
+
+    println!("\n____2.4.7 Match: Type-aware pattern matching");
+    ch2::p247();
 }
