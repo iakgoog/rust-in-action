@@ -305,6 +305,21 @@ mod ch2 {
         println!("                          Begin code block");
         // fn add(i: 32, j: i32) -> i32 {
     }
+
+    pub fn p26() {
+        let a = 42;
+        let r = &a;          // r is a reference to a.
+        let b = a + *r;       // Adds a to a (via dereferencing r) and assign it to b
+        println!("a + a = {}", b); // Prints "a + a = 84"
+
+        let needle = 0o204;
+        let haystack= [1, 1, 2, 5, 15, 52, 203, 877, 4140, 21147] ;
+        for item in &haystack { // Iterates over references to elements within haystack
+            if *item == needle {      // The syntax *item returns the iterms' referent.
+                println!("{}", item);
+            }
+        }
+    }
 }
 
 fn main() {
@@ -350,4 +365,7 @@ fn main() {
 
     println!("\n____2.5 Defining functions");
     ch2::p25();
+
+    println!("\n____2.6 Using references");
+    ch2::p26();
 }
