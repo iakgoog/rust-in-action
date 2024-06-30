@@ -292,6 +292,19 @@ mod ch2 {
             }
         }
     }
+
+    pub fn p25() {
+        // 	┼ ─ │ ├ ┤ ┌ ┐ └ ┘ ┴ ┬
+        println!("  Identifier ┌Parameters┐ Return type");
+        println!("        │  ┌─┴──┐  ┌────┴┐     │");
+        println!("    fn add(i: i32, j: i32) -> i32 {{");
+        println!("     │     │   │   │   │    │     │");
+        println!("  Keyword  │  Type │ Type   │     │");
+        println!("      Identifier Identifier │     │");
+        println!("    Thin arrow to indicate return │");
+        println!("                          Begin code block");
+        // fn add(i: 32, j: i32) -> i32 {
+    }
 }
 
 fn main() {
@@ -334,4 +347,7 @@ fn main() {
 
     println!("\n____2.4.7 Match: Type-aware pattern matching");
     ch2::p247();
+
+    println!("\n____2.5 Defining functions");
+    ch2::p25();
 }
