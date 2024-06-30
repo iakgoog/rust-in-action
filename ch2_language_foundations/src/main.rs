@@ -195,6 +195,29 @@ mod ch2 {
          */
     }
 
+    pub fn p245() {
+        /* 
+        for (x, y) in (0..).zip(0..) {
+            if x + y > 100 {
+                break;
+            }
+            ...
+        }
+        */
+
+        /* BREAK FROM NESTED LOOPS
+        'outer: for x in 0.. {
+            for y in 0.. {
+                for z in 0.. {
+                    if x + y + z > 1000 {
+                        break 'outer;
+                    }
+                    ...
+                }
+            }
+        }
+        */
+    }
 }
 
 fn main() {
@@ -229,4 +252,6 @@ fn main() {
     println!("\n____2.4.4 Loop: The basis for Rust's looping constructs");
     ch2::p244();
 
+    println!("\n____2.4.5 Break: Aborting a loop");
+    ch2::p245();
 }
