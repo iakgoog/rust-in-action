@@ -320,6 +320,17 @@ mod ch2 {
             }
         }
     }
+
+    fn add_with_lifetimes<'a, 'b>(i: &'a i32, j: &'b i32) -> i32 {
+        *i + *j
+    }
+
+    pub fn p281() {
+        let a = 10;
+        let b = 20;
+        let res = add_with_lifetimes(&a, &b);
+        println!("{}", res);
+    }
 }
 
 fn main() {
@@ -368,4 +379,8 @@ fn main() {
 
     println!("\n____2.6 Using references");
     ch2::p26();
+
+    // 2.8 Advanced function definitions
+    println!("\n____2.8.1 Explicit lifetime annotations");
+    ch2::p281();
 }
