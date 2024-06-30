@@ -389,6 +389,27 @@ It is the same with books. What do we seek trhough millions of pages?";
             }
         }
     }
+
+    pub fn p2101() {
+        let one = [1, 2, 3];
+        let two: [u8; 3]  = [1, 2, 3];
+        let blank1 = [0; 3];
+        let blank2: [u8; 3]  = [0; 3];
+
+        let arrays = [one, two, blank1, blank2];
+
+        for a in &arrays {
+            print!("{:?}:", a);
+            for n in a.iter() {
+                print!("\t{} + 10 = {}", n, n + 10);
+            }
+            let mut sum = 0;
+            for i in 0..a.len() {
+                sum += a[i];
+            }
+            println!("\t({:?} = {}", a, sum);
+        }
+    }
 }
 
 fn main() {
@@ -447,4 +468,7 @@ fn main() {
 
     println!("\n____2.9 Creating grep-lite");
     ch2::p29();
+
+    println!("\n____2.10.1 Arrays");
+    ch2::p2101();
 }
