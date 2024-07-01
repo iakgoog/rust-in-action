@@ -1,5 +1,5 @@
 [workspace]
-members = [ "ch2_command_line","ch2_language_foundations", "ch2_mandelbrot"]
+members = [ "ch2_command_line","ch2_language_foundations", "ch2_mandelbrot", "ch3_compound_data_types"]
 
 [package]
 name = "rust-in-action"
