@@ -1,16 +1,23 @@
 #![allow(unused_variables)] // Relaxes compiler warnings while working through ideas
 #![allow(dead_code)]
 
-#[derive(Debug)]
-struct Filez {
-    name: String,
-    data: Vec<u8>,
-}
-
 mod ch3 {
     use std::fmt::Debug;
 
-    use crate::Filez;
+    #[derive(Debug)]
+    struct Filez {
+        name: String,
+        data: Vec<u8>,
+    }
+
+    impl Filez {
+        fn new(name: &str) -> Filez {
+            Filez {
+                name: String::from(name),
+                data: Vec::new(),
+            }
+        }
+    }
 
     // type File = String;
 
@@ -101,15 +108,28 @@ mod ch3 {
         println!("{} is {} bytes long", &f2.name, f2_length);
         println!("{}", text);
     }
+
+    pub fn p331() {
+        let f3 = Filez::new("f3.txt");
+
+        let f3_name = &f3.name;
+        let f3_length = f3.data.len();
+
+        println!("{:?}", f3);
+        println!("{} is {} bytes long", f3_name, f3_length);
+    } 
 }
 
 fn main() {
     // println!("____3.1 Using plain functions to experiment with an API");
     // ch3::p31();
 
-    // println!("____3.2 Modeling files with struct");
+    // println!("\n____3.2 Modeling files with struct");
     // ch3::p32();
 
-    println!("____3.2 Modeling files with struct");
+    println!("\n____3.2 Modeling files with struct");
     ch3::p323();
+
+    println!("\n____3.3.1 Simplying object creation by implenenting new()");
+    ch3::p331();
 }
